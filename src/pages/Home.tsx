@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 const Home: React.FC = () => {
   const containerVariants = {
@@ -56,31 +57,53 @@ const Home: React.FC = () => {
             Horcrux Grimoire
           </h1>
           
-          <p className="text-2xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            دنیای جادویی هری پاتر را کشف کنید
+          <p className="text-2xl text-gray-300 mb-2">
+            دنیای جادویی هری پاتر
           </p>
 
+          {/* Creator Attribution */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="text-lg text-gold-400 font-bold mb-8"
+          >
+            ✨ ساخته‌شده توسط: <span className="text-gold-300">iman</span>
+          </motion.p>
+
           <div className="flex gap-6 justify-center">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="btn-primary"
-            >
-              شخصیت‌ها را بشناسید
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="btn-secondary"
-            >
-              بازی شروع کنید
-            </motion.button>
+            <Link to="/characters">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="btn-primary"
+              >
+                شخصیت‌ها را بشناسید
+              </motion.button>
+            </Link>
+            <Link to="/game">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="btn-secondary"
+              >
+                بازی شروع کنید
+              </motion.button>
+            </Link>
           </div>
         </div>
       </motion.section>
 
       {/* Features Section */}
       <motion.section variants={itemVariants} className="py-20">
+        <motion.h2
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="text-4xl font-bold glow-text text-center mb-12"
+        >
+          ویژگی‌های شگفت‌انگیز
+        </motion.h2>
+        
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             { icon: '🎭', title: 'شخصیت‌ها', desc: 'شخصیت‌های فیلم را بشناسید' },
@@ -98,6 +121,25 @@ const Home: React.FC = () => {
             </motion.div>
           ))}
         </div>
+      </motion.section>
+
+      {/* Creator Spotlight */}
+      <motion.section
+        variants={itemVariants}
+        className="card-dark p-12 rounded-xl text-center mb-12"
+      >
+        <motion.div
+          animate={{ scale: [1, 1.1, 1] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="text-6xl mb-6"
+        >
+          👨‍💻
+        </motion.div>
+        <h3 className="text-3xl font-bold glow-text mb-4">پروژه شخصی iman</h3>
+        <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+          این پروژه با تمام تلاش و خلاقیت توسط <span className="text-gold-400 font-bold">iman</span> ساخته شده است. 
+          یک وب‌اپ حرفه‌ای، جذاب و شاهکار از دنیای هری پاتر 🪄✨
+        </p>
       </motion.section>
     </motion.div>
   )
